@@ -13,12 +13,10 @@
      
  
 # TODO
-* Remove dublicates vars in specs
+* Add uniq result output from web_page_repository.rb, some DTO 
 * Add "FactoryBot" gem
 * Add more unit tests
-* Ability to check rules if some already applied to products
-* Split Rules on two classes with `can_apply?` and `modify_price!` in order to create more flexible rules
-* Add order to rules
+* ? Add ability to filters some log on the beginning of parsing file * 
 
 
 # Code analysis
