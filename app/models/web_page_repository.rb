@@ -23,6 +23,10 @@ class WebPageRepository
 
   private
 
+  def source_data
+    @source_data ||= @parser.retrieve_data
+  end
+
   def calculate_uniq!(result_hash, webpage)
     result_hash[webpage.path] = {} unless result_hash.key?(webpage.path)
     if result_hash[webpage.path].key?(webpage.ip)
@@ -30,9 +34,5 @@ class WebPageRepository
     else
       result_hash[webpage.path][webpage.ip] = 1
     end
-  end
-
-  def source_data
-    @source_data ||= @parser.retrieve_data
   end
 end

@@ -6,6 +6,7 @@ class AbstractParser
     @path = path
   end
 
+  # retrieve_data should return array of wep_page objects in you implementation
   def retrieve_data
     raise 'Should implement'
   end

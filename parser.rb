@@ -1,12 +1,12 @@
 require_relative 'app/lib/logfile_parser'
 require_relative 'app/models/web_page_repository'
-require_relative 'app/web_page_presenter'
+require_relative 'app/views/web_page_console_presenter'
 
 parser = LogfileParser.new(*ARGV)
-webrepo = WebPageRepository.new(parser)
+repo = WebPageRepository.new(parser)
 
-con_presenter = WebPagePresenter.new
+con_presenter = WebPageConsolePresenter.new
 print "====Most page views ===\n"
-con_presenter.display_most(webrepo.most_viewed)
+con_presenter.display_most(repo.most_viewed)
 print "\n==== Unique views ===\n"
-con_presenter.display_uniq(webrepo.unique_views)
+con_presenter.display_uniq(repo.unique_views)
