@@ -1,4 +1,5 @@
-class ConsolePresenter
+# WebPagePresenter display results of web_repository
+class WebPagePresenter
   def display_most(weppages)
     weppages.each do |wp|
       p "[#{wp[0]}] #{wp[1]} visits"

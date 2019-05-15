@@ -2,14 +2,14 @@ require_relative '../../app/models/web_page_repository'
 
 describe 'Test Wep Page Repository' do
   let(:stub_parser) do
-    @stub_parser = AbstractParser.new('test')
+    parser = AbstractParser.new('test')
 
     arr = [WebPage.new('home', '1'),
            WebPage.new('index', '1'),
            WebPage.new('home', '2'),
            WebPage.new('home', '2')]
-    allow(@stub_parser).to receive(:retrieve_data).and_return(arr)
-    @stub_parser
+    allow(parser).to receive(:retrieve_data).and_return(arr)
+    parser
   end
 
   it 'should get most page views ordered' do

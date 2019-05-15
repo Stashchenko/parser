@@ -1,3 +1,4 @@
+# WebPageRepository is repo that allows us to manipulate with wep_page data
 class WebPageRepository
   def initialize(parser)
     @parser = parser

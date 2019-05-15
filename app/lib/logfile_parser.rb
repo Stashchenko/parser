@@ -1,6 +1,7 @@
 require_relative 'abstract_parser'
 require_relative '../models/web_page'
 
+# LogfileParser implements logic that retrieve data from logfile
 class LogfileParser < AbstractParser
   def initialize(path)
     raise ArgumentError unless File.exist?(path)
