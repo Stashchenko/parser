@@ -15,16 +15,21 @@ class WebPageRepository
     res = {}
     source_data.each do |webpage|
       res[webpage.path] = {} unless res.key?(webpage.path)
-      if res[webpage.path].key?(webpage.ip)
-        res[webpage.path][webpage.ip] += 1
-      else
-        res[webpage.path][webpage.ip] = 1
-      end
+      calculate_uniq!(res, webpage)
     end
     res
   end
 
   private
+
+  def calculate_uniq!(result_hash, webpage)
+    result_hash[webpage.path] = {} unless result_hash.key?(webpage.path)
+    if result_hash[webpage.path].key?(webpage.ip)
+      result_hash[webpage.path][webpage.ip] += 1
+    else
+      result_hash[webpage.path][webpage.ip] = 1
+    end
+  end
 
   def source_data
     @source_data ||= @parser.retrieve_data

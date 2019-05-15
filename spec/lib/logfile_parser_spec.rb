@@ -5,7 +5,7 @@ describe 'Test file parser' do
 
   it 'should read from test data' do
     parser = LogfileParser.new(test_file)
-    parser.retrieve_data.length.should eq(5)
+    expect(parser.retrieve_data.length).to eq(5)
   end
 
   it 'should raise exception if no file' do

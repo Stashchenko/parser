@@ -1,14 +1,26 @@
 require_relative '../../app/models/web_page_repository'
 
 describe 'Test Wep Page Repository' do
-  it 'should get 2 visits on home page' do
-    @parser = AbstractParser.new('test')
-    @parser.stub(:retrieve_data) do
-      [WebPage.new('home', '1'),
-       WebPage.new('index', '1'),
-       WebPage.new('home', '2')]
-    end
-    repo = WebPageRepository.new(@parser)
-    repo.most_viewed.first.pop.should eq(2)
+  let(:stub_parser) do
+    @stub_parser = AbstractParser.new('test')
+
+    arr = [WebPage.new('home', '1'),
+           WebPage.new('index', '1'),
+           WebPage.new('home', '2'),
+           WebPage.new('home', '2')]
+    allow(@stub_parser).to receive(:retrieve_data).and_return(arr)
+    @stub_parser
+  end
+
+  it 'should get most page views ordered' do
+    result = WebPageRepository.new(stub_parser).most_viewed
+    expect(result.first[1]).to eq(3)
+    expect(result.last[1]).to eq(1)
+  end
+
+  it 'should get unique views' do
+    result = WebPageRepository.new(stub_parser).unique_views
+    expect(result['home'].length).to eq(2)
+    expect(result['index'].length).to eq(1)
   end
 end
