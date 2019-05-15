@@ -1,17 +1,19 @@
 class WebPageRepository
-  def initialize(source)
-    @source = source
+  def initialize(parser)
+    @parser = parser
   end
 
   def most_viewed
     res = {}
-    source_data.each { |wp| res.key?(wp.path) ? res[wp.path] += 1 : res[wp.path] = 1 }
+    @source_data.each do |wp|
+      res.key?(wp.path) ? res[wp.path] += 1 : res[wp.path] = 1
+    end
     res.sort { |a1, a2| a2[1].to_i <=> a1[1].to_i }
   end
 
   def unique_views
     res = {}
-    source_data.each do |webpage|
+    @source_data.each do |webpage|
       res[webpage.path] = {} unless res.key?(webpage.path)
       if res[webpage.path].key?(webpage.ip)
         res[webpage.path][webpage.ip] += 1
@@ -25,6 +27,6 @@ class WebPageRepository
   private
 
   def source_data
-    @data ||= @source.retrieve_data
+    @source_data ||= @parser.retrieve_data
   end
 end

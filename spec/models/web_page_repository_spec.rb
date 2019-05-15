@@ -1,12 +1,14 @@
 require_relative '../../app/models/web_page_repository'
 
 describe 'Test Wep Page Repository' do
-  it 'should read from test data' do
-    parser = LogfileParser.new(test_file)
-    expect(parser.retrieve_data.length).to eq 5
-  end
-
-  it 'should raise exception if no file' do
-    expect { LogfileParser.new('') }.to raise_error(ArgumentError)
+  it 'should get 2 visits on home page' do
+    @parser = AbstractParser.new('test')
+    @parser.stub(:retrieve_data) do
+      [WebPage.new('home', '1'),
+       WebPage.new('index', '1'),
+       WebPage.new('home', '2')]
+    end
+    repo = WebPageRepository.new(@parser)
+    repo.most_viewed.first.pop.should eq(2)
   end
 end

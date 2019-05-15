@@ -4,7 +4,6 @@ require_relative '../models/web_page'
 class LogfileParser < AbstractParser
   def initialize(path)
     raise ArgumentError unless File.exist?(path)
-
     super(path)
   end
 
