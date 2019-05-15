@@ -9,6 +9,6 @@ describe 'Test file parser' do
   end
 
   it 'should raise exception if no file' do
-    expect { FileParser.new('') }.to raise_error(ArgumentError)
+    expect { FileParser.new('') }.to raise_error('File not found')
   end
 end

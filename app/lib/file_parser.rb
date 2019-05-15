@@ -1,15 +1,14 @@
-require_relative 'abstract_parser'
+require_relative 'base_parser'
 require_relative '../models/web_page'
 
 # LogfileParser implements logic that retrieve data from logfile
-class FileParser < AbstractParser
-  DELIMITER = ' '.freeze
+class FileParser < BaseParser
+  # FILE_NOT_FOUND_ERROR = 'File not found'.freeze
 
   def initialize(path)
-    raise ArgumentError unless File.exist?(path)
+    raise 'File not found' unless File.exist?(path)
 
     @file = File.open(path).read
-    super(path)
   end
 
   def retrieve_data
@@ -19,9 +18,5 @@ class FileParser < AbstractParser
       result << WebPage.new(path, ip)
     end
     result
-  end
-
-  def parse_line(line)
-    line.split(DELIMITER)
   end
 end

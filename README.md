@@ -9,41 +9,53 @@
 
     Run:
      * Result `ruby parser.rb webserver.log`
-     * Tests `rspec`
+     * Tests `rspec` -> `All Files (98.51% covered at 2.03 hits/line)` 
+     
+     
      
 # Result
 ```
 ====Most page views ===
-"[/about/2] 90 visits"
-"[/contact] 89 visits"
-"[/index] 82 visits"
-"[/about] 81 visits"
-"[/help_page/1] 80 visits"
-"[/home] 78 visits"
+[/about/2] 90 visits
+[/contact] 89 visits
+[/index] 82 visits
+[/about] 81 visits
+[/help_page/1] 80 visits
+[/home] 78 visits
 
 ==== Unique views ===
-"[/help_page/1]  23 unique views"
-"[/contact]  23 unique views"
-"[/home]  23 unique views"
-"[/about/2]  22 unique views"
-"[/index]  23 unique views"
-"[/about]  21 unique views" 
+[/help_page/1] 23 unique views
+[/contact] 23 unique views
+[/home] 23 unique views
+[/about/2] 22 unique views
+[/index] 23 unique views
+[/about] 21 unique views
 ```
 # TODO
 * Add uniq result output from `web_page_repository.rb`, e.g. some DTO instead of hash
 * Split logic of getting file and parsing
-* Extract normalize methods from `web_page_repository`  
-* Add "FactoryBot" gem
+* Extract transform_result from `web_page_repository`  
+* Add "FactoryBot" gem in order to created WebPage dummy data
 * Add more unit tests
-* ? Add ability to filters some log on the beginning of parsing file * 
+* ? Add ability to filters some log on the beginning of parsing file 
 
 
 # Code analysis
-## Rubocop code inspection
+## [Rubocop](https://github.com/rubocop-hq/rubocop)
 
 Run in cmd: `rubocop`
 
-## RubyCritics
+Result: `10 files inspected, no offenses detected`
+
+## [RubyCritics](https://github.com/whitesmith/rubycritic)
 Run in cmd: `rubycritic`
+    
+Result: `Score: 95.37`
+
+## [fasterer](https://github.com/DamirSvrtan/fasterer) 
+Run in cmd: `fasterer`
+
+Result: `9 files inspected, 0 offenses detected`
+
         
  
