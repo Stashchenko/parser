@@ -11,7 +11,22 @@
      * Result `ruby parser.rb webserver.log`
      * Tests `rspec`
      
- 
+#Result
+    ====Most page views ===
+    "[/about/2] 90 visits"
+    "[/contact] 89 visits"
+    "[/index] 82 visits"
+    "[/about] 81 visits"
+    "[/help_page/1] 80 visits"
+    "[/home] 78 visits"
+    
+    ==== Unique views ===
+    "[/help_page/1]  23 unique views"
+    "[/contact]  23 unique views"
+    "[/home]  23 unique views"
+    "[/about/2]  22 unique views"
+    "[/index]  23 unique views"
+    "[/about]  21 unique views" 
 # TODO
 * Add uniq result output from web_page_repository.rb, some DTO 
 * Add "FactoryBot" gem
