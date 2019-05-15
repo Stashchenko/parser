@@ -1,4 +1,4 @@
-require_relative 'app/parsers/logfile_parser'
+require_relative 'app/lib/logfile_parser'
 require_relative 'app/models/web_page_repository'
 require_relative 'app/console_presenter'
 
