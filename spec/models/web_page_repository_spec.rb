@@ -3,7 +3,6 @@ require_relative '../../app/models/web_page_repository'
 describe 'Test Wep Page Repository' do
   let(:stub_parser) do
     parser = AbstractParser.new('test')
-
     arr = [WebPage.new('home', '1'),
            WebPage.new('index', '1'),
            WebPage.new('home', '2'),
@@ -14,8 +13,8 @@ describe 'Test Wep Page Repository' do
 
   it 'should get most page views ordered' do
     result = WebPageRepository.new(stub_parser).most_viewed
-    expect(result.first[1]).to eq(3)
-    expect(result.last[1]).to eq(1)
+    expect(result.first[:result]).to eq(3)
+    expect(result.last[:result]).to eq(1)
   end
 
   it 'should get unique views' do

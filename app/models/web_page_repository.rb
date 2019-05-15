@@ -5,11 +5,9 @@ class WebPageRepository
   end
 
   def most_viewed
-    temp = {}
-    source_data.each do |wp|
-      temp.key?(wp.path) ? temp[wp.path] += 1 : temp[wp.path] = 1
-    end
-    temp.sort { |a1, a2| a2[1].to_i <=> a1[1].to_i }
+    temp = source_data.each_with_object(Hash.new(0)) { |e, h| h[e.path] += 1 }
+    out = temp.sort { |a1, a2| a2[1].to_i <=> a1[1].to_i }
+    normalize_most_viewed(out)
   end
 
   def unique_views
@@ -18,7 +16,7 @@ class WebPageRepository
       res[webpage.path] ||= {}
       calculate_uniq!(res, webpage)
     end
-    res
+    normalize_uniq(res)
   end
 
   private
@@ -34,5 +32,21 @@ class WebPageRepository
     else
       result_hash[webpage.path][webpage.ip] = 1
     end
+  end
+
+  def normalize_most_viewed(out)
+    result = []
+    out.each do |v|
+      result << { path: v[0], result: v[1] }
+    end
+    result
+  end
+
+  def normalize_uniq(res)
+    result = []
+    res.each do |v|
+      result << { path: v[0], result: v[1].length }
+    end
+    result
   end
 end

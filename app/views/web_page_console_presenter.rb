@@ -2,13 +2,13 @@
 class WebPageConsolePresenter
   def display_most(weppages)
     weppages.each do |wp|
-      p "[#{wp[0]}] #{wp[1]} visits"
+      puts "[#{wp[:path]}] #{wp[:result]} visits"
     end
   end
 
   def display_uniq(weppages)
-    weppages.each do |name, value|
-      p "[#{name}]  #{value.length} unique views"
+    weppages.each do |wp|
+      puts "[#{wp[:path]}] #{wp[:result]} unique views"
     end
   end
 end

@@ -8,12 +8,13 @@ class FileParser < AbstractParser
   def initialize(path)
     raise ArgumentError unless File.exist?(path)
 
+    @file = File.open(path).read
     super(path)
   end
 
   def retrieve_data
     result = []
-    File.open(@path).each_line do |line|
+    @file.each_line do |line|
       path, ip = parse_line(line)
       result << WebPage.new(path, ip)
     end
