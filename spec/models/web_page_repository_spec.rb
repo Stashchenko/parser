@@ -1,13 +1,16 @@
 require_relative '../../app/models/web_page_repository'
 
 describe 'Test WepPage Repository' do
+  let(:webpage_arr) do
+    [WebPage.new('home', '1'),
+     WebPage.new('index', '1'),
+     WebPage.new('home', '2'),
+     WebPage.new('home', '2')]
+  end
+
   let(:repo) do
     parser = BaseParser.new
-    arr = [WebPage.new('home', '1'),
-           WebPage.new('index', '1'),
-           WebPage.new('home', '2'),
-           WebPage.new('home', '2')]
-    allow(parser).to receive(:retrieve_data).and_return(arr)
+    allow(parser).to receive(:retrieve_data).and_return(webpage_arr)
     WebPageRepository.new(parser)
   end
 
