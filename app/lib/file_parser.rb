@@ -3,8 +3,6 @@ require_relative '../models/web_page'
 
 # LogfileParser implements logic that retrieve data from logfile
 class FileParser < BaseParser
-  # FILE_NOT_FOUND_ERROR = 'File not found'.freeze
-
   def initialize(path)
     raise 'File not found' unless File.exist?(path)
 

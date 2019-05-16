@@ -2,7 +2,7 @@
 class BaseParser
   DELIMITER = ' '.freeze
 
-  # retrieve_data should return array of wep_page objects in your implementation
+  # retrieve_data should return array of wep_page objects in an implementation
   def retrieve_data
     raise 'Should implement'
   end

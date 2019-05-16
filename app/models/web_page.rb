@@ -1,4 +1,4 @@
-# WebPage is a base model to working on a data
+# WebPage is a base model to work with
 class WebPage
   attr_reader :path, :ip
 

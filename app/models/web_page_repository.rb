@@ -30,7 +30,7 @@ class WebPageRepository
 
   def transform_result(enumerable)
     enumerable.each_with_object([]) do |arr, out|
-      out << { path: arr[0], result: arr[1].length }
+      out << { key: arr[0], result: arr[1].length }
     end
   end
 end
