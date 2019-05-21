@@ -1,20 +1,26 @@
 require_relative 'base_parser'
 require_relative '../models/web_page'
 
-# LogfileParser implements logic that retrieve data from logfile
+# FileParser implements logic that get logs from file
 class FileParser < BaseParser
+  DELIMITER = ' '.freeze
+
   def initialize(path)
     raise 'File not found' unless File.exist?(path)
 
-    @file = File.open(path).read
+    @file = File.open(path, 'r')
   end
 
   def retrieve_data
-    result = []
-    @file.each_line do |line|
-      path, ip = parse_line(line)
-      result << WebPage.new(path, ip)
+    @file.each_line.each_with_object([]) do |line, arr|
+      time, path, ip = parse_line(line)
+      arr << WebPage.new(path, ip, time)
     end
-    result
+  end
+
+  private
+
+  def parse_line(line)
+    line.split(DELIMITER)
   end
 end

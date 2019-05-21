@@ -1,13 +1,16 @@
 require_relative 'app/lib/file_parser'
 require_relative 'app/models/web_page_repository'
+require_relative 'app/controllers/wep_page_controller'
 require_relative 'app/views/web_page_viewer'
+# require_relative 'app/models/query_builder/queries/group_by_query'
+# require_relative 'app/models/query_builder/queries/sort_by_query'
+# require_relative 'app/models/query_builder/query_builder'
 
-parser = FileParser.new(*ARGV)
-repo = WebPageRepository.new(parser)
+repo = WebPageRepository.new(FileParser.new('webserver_2.log'))
 viewer = WebPageViewer.new
 
-print "====Most page views ===\n"
-viewer.display_most(repo.most_viewed)
-
-print "\n==== Unique views ===\n"
-viewer.display_uniq(repo.unique_views)
+c = WepPageController.new(repo, viewer)
+c.most_viewed
+c.unique_views
+c.unique_ips
+c.sort_by_time
