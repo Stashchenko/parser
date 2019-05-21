@@ -12,10 +12,12 @@ class FileParser < BaseParser
   end
 
   def retrieve_data
-    @file.each_line.each_with_object([]) do |line, arr|
+    data = @file.each_line.each_with_object([]) do |line, arr|
       time, path, ip = parse_line(line)
       arr << WebPage.new(path, ip, time)
     end
+    @file.close
+    data
   end
 
   private
