@@ -25,10 +25,9 @@ class SortByQuery
     return data if @field.nil?
 
     if data.respond_to?(@field)
-      data.send(@field)
+      data[1].send(@field)
     elsif grouped_data?(data)
       data[1].sort_by { |obj| obj.send(@field) }
-      data[0]
     end
   end
 

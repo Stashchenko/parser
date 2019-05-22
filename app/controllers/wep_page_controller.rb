@@ -18,10 +18,6 @@ class WepPageController
     @view.display_ip(transform_result(@repo.uniq_ip))
   end
 
-  def sort_by_time
-    @view.all_data(@repo.sort_by_time)
-  end
-
   private
 
   def transform_result(enumerable)

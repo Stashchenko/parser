@@ -15,11 +15,7 @@ class WebPageRepository
   end
 
   def uniq_ip
-    QueryBuilder.new(source_data).group_by(:ip).sort_by(:length, :des).process
-  end
-
-  def sort_by_time
-    QueryBuilder.new(source_data).group_by(:path).sort_by(:time, :des).process
+    QueryBuilder.new(source_data).group_by(:ip).sort_by(:length).process
   end
 
   def source_data

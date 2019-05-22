@@ -13,8 +13,8 @@ class FileParser < BaseParser
 
   def retrieve_data
     data = @file.each_line.each_with_object([]) do |line, arr|
-      time, path, ip = parse_line(line)
-      arr << WebPage.new(path, ip, time)
+      path, ip = parse_line(line)
+      arr << WebPage.new(path, ip)
     end
     @file.close
     data

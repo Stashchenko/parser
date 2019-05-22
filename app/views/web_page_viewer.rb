@@ -22,13 +22,6 @@ class WebPageViewer
     end
   end
 
-  def all_data(weppages)
-    puts "\n==== Calls per ip ==="
-    weppages.each do |wp|
-      puts wp.inspect
-    end
-  end
-
   private
 
   def base_string(webpage_h)
