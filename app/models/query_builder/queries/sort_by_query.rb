@@ -24,11 +24,7 @@ class SortByQuery
   def apply_for(data)
     return data if @field.nil?
 
-    if data.respond_to?(@field)
-      data[1].send(@field)
-    elsif grouped_data?(data)
-      data[1].sort_by { |obj| obj.send(@field) }
-    end
+    data[1].send(@field) if data.respond_to?(@field) && grouped_data?(data)
   end
 
   def grouped_data?(data)
